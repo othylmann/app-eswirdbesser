@@ -13,16 +13,7 @@
     "web": {
       "favicon": "./assets/icon.png",
       "bundler": "metro",
-      "output": "single",
-      "name": "Es Wird Besser",
-      "shortName": "Es Wird Besser",
-      "description": "Optimistische Wetter-Nachrichten für jeden Tag! 🌈",
-      "themeColor": "#4A90E2",
-      "backgroundColor": "#F5F9FF",
-      "display": "standalone",
-      "orientation": "portrait",
-      "lang": "de",
-      "publicPath": "/app-eswirdbesser/"
+      "output": "single"
     },
     "plugins": [
       "expo-asset",
