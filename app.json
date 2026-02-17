@@ -13,7 +13,7 @@
     "web": {
       "favicon": "./assets/icon.png",
       "bundler": "metro",
-      "output": "static",
+      "output": "single",
       "name": "Es Wird Besser",
       "shortName": "Es Wird Besser",
       "description": "Optimistische Wetter-Nachrichten für jeden Tag! 🌈",
