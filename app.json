@@ -10,30 +10,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#F5F9FF"
     },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.eswirdbesser.app",
-      "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Wir brauchen deinen Standort, um dir zu sagen, dass es besser wird! 🌈"
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#F5F9FF"
-      },
-      "permissions": [
-        "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION"
-      ]
+    "web": {
+      "favicon": "./assets/icon.png",
+      "bundler": "metro",
+      "output": "static",
+      "name": "Es Wird Besser",
+      "shortName": "Es Wird Besser",
+      "description": "Optimistische Wetter-Nachrichten für jeden Tag! 🌈",
+      "themeColor": "#4A90E2",
+      "backgroundColor": "#F5F9FF",
+      "display": "standalone",
+      "orientation": "portrait",
+      "lang": "de"
     },
     "plugins": [
       "expo-asset",
       "expo-font"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "79630609-a480-4ba2-95f4-4c75ef18fc0b"
-      }
-    }
+    ]
   }
 }
