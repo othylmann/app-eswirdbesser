@@ -1,6 +1,7 @@
 {
   "name": "app-eswirdbesser",
   "version": "1.0.0",
+  "homepage": "/app-eswirdbesser",
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",

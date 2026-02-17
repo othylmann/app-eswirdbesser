@@ -21,7 +21,8 @@
       "backgroundColor": "#F5F9FF",
       "display": "standalone",
       "orientation": "portrait",
-      "lang": "de"
+      "lang": "de",
+      "publicPath": "/app-eswirdbesser/"
     },
     "plugins": [
       "expo-asset",
