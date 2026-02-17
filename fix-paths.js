@@ -6,6 +6,7 @@ const path = require('path');
 
 const indexPath = path.join(__dirname, 'dist', 'index.html');
 const manifestPath = path.join(__dirname, 'dist', 'manifest.json');
+const nojekyllPath = path.join(__dirname, 'dist', '.nojekyll');
 
 // Fix index.html
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
@@ -22,4 +23,9 @@ manifest = manifest.replace(/"start_url": "\//g, '"start_url": "/app-eswirdbesse
 fs.writeFileSync(manifestPath, manifest);
 
 console.log('✅ Fixed manifest.json paths');
+
+// Create .nojekyll to disable Jekyll
+fs.writeFileSync(nojekyllPath, '');
+console.log('✅ Created .nojekyll file');
+
 console.log('✅ All paths fixed for GitHub Pages!');
