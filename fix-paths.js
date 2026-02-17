@@ -10,6 +10,14 @@ const nojekyllPath = path.join(__dirname, 'dist', '.nojekyll');
 
 // Fix index.html
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
+
+// Add base tag for all relative URLs (fixes font paths, etc.)
+indexHtml = indexHtml.replace(
+  '<head>',
+  '<head>\n    <base href="/app-eswirdbesser/">'
+);
+
+// Fix absolute paths
 indexHtml = indexHtml.replace(/href="\//g, 'href="/app-eswirdbesser/');
 indexHtml = indexHtml.replace(/src="\//g, 'src="/app-eswirdbesser/');
 fs.writeFileSync(indexPath, indexHtml);
