@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Es Wird Besser",
+    "slug": "es-wird-besser",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#F5F9FF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.eswirdbesser.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Wir brauchen deinen Standort, um dir zu sagen, dass es besser wird! 🌈"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F5F9FF"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "79630609-a480-4ba2-95f4-4c75ef18fc0b"
+      }
+    }
+  }
+}

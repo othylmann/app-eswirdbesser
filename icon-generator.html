@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es Wird Besser - Icon Generator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f9ff;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* App Icon Canvas */
+        #iconCanvas {
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #357ABD;
+        }
+
+        .download-btn {
+            background: #2ECC71;
+        }
+
+        .download-btn:hover {
+            background: #27AE60;
+        }
+
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: left;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .info h3 {
+            color: #4A90E2;
+            margin-top: 0;
+        }
+
+        .info ul {
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌈 Es Wird Besser - Icon Generator</h1>
+        <p>Erstelle dein App Icon (1024x1024px)</p>
+
+        <canvas id="iconCanvas" width="512" height="512"></canvas>
+
+        <div class="controls">
+            <button onclick="drawIcon('sunny')">☀️ Sonnig</button>
+            <button onclick="drawIcon('cloudy')">☁️ Wolkig</button>
+            <button onclick="drawIcon('rainbow')">🌈 Regenbogen</button>
+            <button class="download-btn" onclick="downloadIcon()">⬇️ Herunterladen (1024x1024)</button>
+        </div>
+
+        <div class="info">
+            <h3>📝 Anleitung:</h3>
+            <ul>
+                <li><strong>Schritt 1:</strong> Wähle ein Design (Sonnig, Wolkig oder Regenbogen)</li>
+                <li><strong>Schritt 2:</strong> Klicke auf "Herunterladen" um das Icon als PNG zu speichern</li>
+                <li><strong>Schritt 3:</strong> Speichere die Datei als <code>icon.png</code> im <code>assets/</code> Ordner</li>
+                <li><strong>Optional:</strong> Passe das Design in einem Grafik-Tool (Canva, Figma) an</li>
+            </ul>
+
+            <h3>🎨 Design-Empfehlung:</h3>
+            <p>Das Icon sollte optimistisch und freundlich wirken. Verwende helle Farben und klare Symbole. Ein Regenbogen oder eine lächelnde Sonne funktionieren sehr gut!</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Initial draw
+        drawIcon('rainbow');
+
+        function drawIcon(type) {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#4A90E2');
+            gradient.addColorStop(1, '#6BA3E8');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            if (type === 'sunny') {
+                drawSunny();
+            } else if (type === 'cloudy') {
+                drawCloudy();
+            } else if (type === 'rainbow') {
+                drawRainbow();
+            }
+        }
+
+        function drawSunny() {
+            // Sun
+            ctx.fillStyle = '#FDB813';
+            ctx.beginPath();
+            ctx.arc(256, 200, 100, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Sun rays
+            ctx.strokeStyle = '#FDB813';
+            ctx.lineWidth = 15;
+            ctx.lineCap = 'round';
+
+            for (let i = 0; i < 8; i++) {
+                const angle = (Math.PI * 2 / 8) * i;
+                const x1 = 256 + Math.cos(angle) * 130;
+                const y1 = 200 + Math.sin(angle) * 130;
+                const x2 = 256 + Math.cos(angle) * 180;
+                const y2 = 200 + Math.sin(angle) * 180;
+
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+            }
+
+            // Smile
+            ctx.strokeStyle = '#357ABD';
+            ctx.lineWidth = 8;
+            ctx.beginPath();
+            ctx.arc(256, 200, 60, 0.2, Math.PI - 0.2);
+            ctx.stroke();
+
+            // Eyes
+            ctx.fillStyle = '#357ABD';
+            ctx.beginPath();
+            ctx.arc(230, 180, 12, 0, Math.PI * 2);
+            ctx.arc(282, 180, 12, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Es wird', 256, 380);
+            ctx.fillText('besser', 256, 440);
+        }
+
+        function drawCloudy() {
+            // Cloud
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(180, 220, 60, 0, Math.PI * 2);
+            ctx.arc(256, 200, 80, 0, Math.PI * 2);
+            ctx.arc(332, 220, 60, 0, Math.PI * 2);
+            ctx.rect(180, 220, 152, 60);
+            ctx.fill();
+
+            // Sun peeking
+            ctx.fillStyle = '#FDB813';
+            ctx.beginPath();
+            ctx.arc(400, 140, 60, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 48px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Es wird', 256, 380);
+            ctx.fillText('besser', 256, 440);
+        }
+
+        function drawRainbow() {
+            const colors = ['#E74C3C', '#F39C12', '#FDB813', '#2ECC71', '#4A90E2', '#9B59B6'];
+            const centerX = 256;
+            const centerY = 450;
+            const startRadius = 280;
+
+            // Draw rainbow arcs
+            for (let i = 0; i < colors.length; i++) {
+                ctx.strokeStyle = colors[i];
+                ctx.lineWidth = 25;
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, startRadius - (i * 30), Math.PI, 0);
+                ctx.stroke();
+            }
+
+            // White cloud base
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(140, 440, 50, 0, Math.PI * 2);
+            ctx.arc(372, 440, 50, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Sun
+            ctx.fillStyle = '#FDB813';
+            ctx.beginPath();
+            ctx.arc(256, 140, 70, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 40px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.strokeStyle = '#4A90E2';
+            ctx.lineWidth = 8;
+            ctx.strokeText('Es wird besser', 256, 350);
+            ctx.fillText('Es wird besser', 256, 350);
+        }
+
+        function downloadIcon() {
+            // Create a high-res canvas
+            const highResCanvas = document.createElement('canvas');
+            highResCanvas.width = 1024;
+            highResCanvas.height = 1024;
+            const highResCtx = highResCanvas.getContext('2d');
+
+            // Scale up
+            highResCtx.scale(2, 2);
+
+            // Redraw on high-res canvas
+            const currentCanvas = document.getElementById('iconCanvas');
+            highResCtx.drawImage(currentCanvas, 0, 0);
+
+            // Download
+            const link = document.createElement('a');
+            link.download = 'es-wird-besser-icon.png';
+            link.href = highResCanvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
